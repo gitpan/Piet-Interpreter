@@ -5,7 +5,7 @@ use strict;
 use Carp;
 use Image::Magick;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -101,7 +101,9 @@ my @do_arr = (
 
 =head1 METHODS
 
-=head2 my $piet = Piet::Interpreter->new( %args );
+=over
+
+=item my $piet = Piet::Interpreter->new( %args );
 
 Instantiates and returns a new Piet::Interpreter object.  Valid
 arguments are:
@@ -167,7 +169,7 @@ sub new {
     return $self;
 }
 
-=head2 $piet->reset;
+=item $piet->reset;
 
 Resets the PVM (Piet Virtual Machine) back to the default state.
 After a reset, the current x and y should both be 0, the DP points to
@@ -197,7 +199,7 @@ sub reset {
     $self->{_last_color} = $self->matrix($self->{_cx},$self->{_cy});
 }
 
-=head2 $piet->image('myprog.gif');
+=item $piet->image('myprog.gif');
 
 Loads in a program image from the specified file.  The interpreter was
 designed and tested using gif images, but any format that is supported
@@ -239,7 +241,7 @@ sub image {
     $self->_process_image;
 }
 
-=head2 $piet->run;
+=item $piet->run;
 
 Starts the Piet interpreter running from the upper-left codel.
 Program execution is described under "Language Concepts", below.
@@ -269,7 +271,7 @@ sub run {
     $self->_debug("\nEnd Of Line.");
 }
 
-=head2 $done = $piet->step;
+=item $done = $piet->step;
 
 Performs one "step" of a Piet program, where a step is one transition
 from one codel block to the next.  A failed transition (trying to go
@@ -370,35 +372,35 @@ sub step {
 
 ##  public accessor and output methods - no autoload! no Class::Struct! wooot!
 
-=head2 $piet->debug(1);
+=item $piet->debug(1);
 
 Turns debugging information on or off.
 
-=head2 $piet->warn(1);
+=item $piet->warn(1);
 
 Turns warnings on or off.
 
-=head2 $piet->trace(1);
+=item $piet->trace(1);
 
 Turns program instruction tracing on or off.
 
-=head2 $piet->codel_size(5);
+=item $piet->codel_size(5);
 
 Sets or returns the codel size for the program image.
 
-=head2 $piet->nonstandard('white');
+=item $piet->nonstandard('white');
 
 Sets the behavior of non-standard codels to 'white' or 'black'.
 
-=head2 $rows = $piet->rows;
+=item $rows = $piet->rows;
 
 Returns the number of codel rows in the program image.
 
-=head2 $cols = $piet->rows;
+=item $cols = $piet->rows;
 
 Returns the number of codel columns in the program image.
 
-=head2 $file = $piet->rows;
+=item $file = $piet->rows;
 
 Returns the name of the file from which the program image was loaded.
 
@@ -477,7 +479,7 @@ sub set_matrix {
     $self->{_matrix} = $matrix_ref;
 }
 
-=head2 $piet->state("CHECK");
+=item $piet->state("CHECK");
 
 Prints detailed information about the state of the PVM, with an
 optional label.  Information reported includes the filename, number of
@@ -513,10 +515,12 @@ sub state {
     
 }
 
-=head2 print $piet->to_text;
+=item print $piet->to_text;
 
 Returns a nicely formatted text version of the program image's codel
 matrix, with the filename, codel size, and column/row information.
+
+=back
 
 =cut
 
@@ -1324,6 +1328,7 @@ Marc Majcher (piet-interpreter@majcher.com)
 =head1 SEE ALSO
 
 L<http://www.majcher.com/code/piet> 
+
 L<http://www.physics.usyd.edu.au/~mar/esoteric/piet.html>
 
 =cut

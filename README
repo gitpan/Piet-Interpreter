@@ -1,4 +1,4 @@
-Piet/Interpreter version 0.02
+Piet/Interpreter version 0.03
 =============================
 
 Piet is a programming language in which programs look like abstract
@@ -31,7 +31,6 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
     Image::Magick
-    Getopt::Std
     POSIX
 
 COPYRIGHT AND LICENCE

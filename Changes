@@ -17,3 +17,8 @@ Revision history for Perl extension Piet::Interpreter.
     Added a ton of documentation, and cleaned up the code
     considerably.  I think this may be ready for public consumption -
     consider this the "beta" release. 
+
+0.03  Wed Nov 21 05:11:23 2001
+
+    Added Image::Magick to PREREQ_PM list in Makefile.PL for testing.
+    Reformatted the perldoc to avoid making eyes bleed.
